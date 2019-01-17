@@ -1,6 +1,12 @@
 from fastai import *
 
-untar_data(MNIST_PATH)
-data = image_data_from_folder(MNIST_PATH)
-learn = create_cnn(data, tvm.resnet18, metrics=accuracy)
-learn.fit(1)
+path = untar_data(URLs.MNIST_SAMPLE)
+
+data = ImageDataBunch.from_folder(path, ds_tfms=(rand_pad(2, 28), []), bs=64)
+data.normalize(imagenet_stats)
+img, label = data.train_ds[0]
+
+learn = create_cnn(data, models.resnet18, metrics=accuracy)
+learn.fit_one_cycle(1, 0.01)
+
+accuracy(*learn.get_preds())

@@ -1,0 +1,40 @@
+storage:
+ value: default
+ wizard:
+   name: "Storage Configuration"
+   kind: cluster_storage
+
+pytorch_version:
+  value: "0.4.1"
+  wizard:
+    name: "PyTorch version"
+    kind: select
+    options:
+    - "0.4.1"
+    - "1.0.0"
+
+python_version:
+  value: "3"
+  wizard:
+    name: "Python version"
+    kind: select
+    options:
+    - "2"
+    - "3"
+
+src:
+  value: https://github.com/kuberlab/pytorch-examples
+  wizard:
+    name: "Source Code"
+    kind: git
+
+dataset:
+ value: 'mnist'
+ version: '1.0.0'
+ workspace: 'kuberlab-demo'
+ wizard:
+   name: "Dataset configuration"
+   kind: dataset
+
+# Pip packages may be specified here in format that pip accepts.
+packages: []

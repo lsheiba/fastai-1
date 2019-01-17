@@ -115,10 +115,10 @@ spec:
     name: src
     subPath: {{ gitSubPath .src.value }}
   - gitRepo:
-      repository: {{ gitRepo "https://github.com/kuberlab/pytorch-examples" }}
+      repository: {{ gitRepo "https://github.com/kuberlab-catalog/fastai" }}
     isLibDir: false
     name: examples
-    subPath: {{ gitSubPath "https://github.com/kuberlab/pytorch-examples" }}
+    subPath: {{ gitSubPath "https://github.com/kuberlab-catalog/fastai" }}
   - isLibDir: true
     name: lib
     clusterStorage: {{ .storage.value }}

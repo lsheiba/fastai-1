@@ -22,9 +22,8 @@ spec:
         gpu: "kuberlab/fastai:latest-gpu"
         cpu: "kuberlab/fastai:latest-cpu"
       command: >-
-        python spatial_transformer.py --batch-size 64 --epochs 10
-        --data-dir $DATA_DIR --training_dir $TRAINING_DIR
-      workdir: "$SRC_DIR"
+        python $SRC_DIR/src/example.py
+      workdir: "$TRAINING_DIR"
       resources:
         accelerators:
           gpu: 0

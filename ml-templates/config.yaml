@@ -106,24 +106,16 @@ spec:
       name: http
     default_volume_mapping: true
   volumes:
-  - isLibDir: false
-    name: training
+  - name: training
     clusterStorage: {{ .storage.value }}
   - gitRepo:
       repository: {{ gitRepo .src.value }}
-    isLibDir: false
     name: src
     subPath: {{ gitSubPath .src.value }}
-  - gitRepo:
-      repository: {{ gitRepo "https://github.com/kuberlab-catalog/fastai" }}
-    isLibDir: false
-    name: examples
-    subPath: {{ gitSubPath "https://github.com/kuberlab-catalog/fastai" }}
   - isLibDir: true
     name: lib
     clusterStorage: {{ .storage.value }}
-  - isLibDir: false
-    name: data
+  - name: data
     {{- if .dataset.value }}
     datasetFS:
       workspace: {{ .dataset.workspace }}
@@ -132,8 +124,7 @@ spec:
     {{- else }}
     clusterStorage: {{ .storage.value }}
     {{- end }}
-  - isLibDir: false
-    mountPath: /notebooks
+  - mountPath: /notebooks
     name: code
     subPath: code
     clusterStorage: {{ .storage.value }}

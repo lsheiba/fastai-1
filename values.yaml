@@ -4,26 +4,8 @@ storage:
    name: "Storage Configuration"
    kind: cluster_storage
 
-pytorch_version:
-  value: "0.4.1"
-  wizard:
-    name: "PyTorch version"
-    kind: select
-    options:
-    - "0.4.1"
-    - "1.0.0"
-
-python_version:
-  value: "3"
-  wizard:
-    name: "Python version"
-    kind: select
-    options:
-    - "2"
-    - "3"
-
 src:
-  value: https://github.com/kuberlab/pytorch-examples
+  value: https://github.com/kuberlab/fastai
   wizard:
     name: "Source Code"
     kind: git

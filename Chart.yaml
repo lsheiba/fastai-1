@@ -1,15 +1,16 @@
-Description: PyTorch
+Description: Fast.ai
 Engine: gotpl
 Home: http://kuberlab.com
-Icon: https://storage.googleapis.com/kuberlab-images/torch-logo.png
+Icon: https://storage.googleapis.com/kuberlab-images/fastai.jpg
 Keywords:
-- PyTorch
+- fastai
+- fast.ai
 - template
 - kuberlab
 - kuberlabapptemplate
 Maintainers:
-- Email: agunin@kuberlab.com
-  Name: Gunin Alexander
-Name: PyTorch
+- Email: nmahotkin@kuberlab.com
+  Name: Makhotkin Nikolay
+Name: fastai
 Version: 1.0.0
 Type: mlapp-v2

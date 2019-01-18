@@ -28,10 +28,10 @@ spec:
         accelerators:
           gpu: 0
         requests:
-          cpu: 100m
-          memory: 64Mi
+          cpu: "1"
+          memory: 1Gi
         limits:
-          cpu: 1000m
+          cpu: "2"
           memory: 4Gi
       default_volume_mapping: true
 
@@ -48,7 +48,7 @@ spec:
         cpu: 100m
         memory: 64Mi
       limits:
-        cpu: 1000m
+        cpu: 2000m
         memory: 4Gi
     ports:
     - port: 8888

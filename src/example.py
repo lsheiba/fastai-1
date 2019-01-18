@@ -1,5 +1,6 @@
 import argparse
 from os import path
+import tempfile
 
 import torch
 from fastai import *
@@ -18,7 +19,8 @@ def parse_args():
 
 def main():
     args = parse_args()
-    data_path = untar_data(URLs.MNIST_SAMPLE, dest=args.train_dir)
+    data_dir = path.join(args.train_dir, 'mnist_sample')
+    data_path = untar_data(URLs.MNIST_SAMPLE, fname=tempfile.mktemp(), dest=data_dir)
 
     print('Using path %s' % data_path)
     data = ImageDataBunch.from_folder(data_path, ds_tfms=(rand_pad(2, 28), []), bs=64)

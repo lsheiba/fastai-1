@@ -11,7 +11,7 @@ spec:
     manager: "pip{{.python_version.value}}"
   default_mount_path: "/notebooks"
   tasks:
-  - name: standalone
+  - name: train
     resources:
     - name: worker
       replicas: 1
@@ -34,55 +34,7 @@ spec:
           cpu: 1000m
           memory: 4Gi
       default_volume_mapping: true
-  - name: mnist-example
-    resources:
-    - name: worker
-      replicas: 1
-      restartPolicy: Never
-      maxRestartCount: 0
-      allowFail: true
-      images:
-        gpu: "kuberlab/fastai:latest-gpu"
-        cpu: "kuberlab/fastai:latest-cpu"
-      command: >-
-        python mnist.py --data-dir $DATA_DIR --training_dir $TRAINING_DIR --out-dir $TRAINING_DIR
-        --batch-size 64 --epochs 3
-      workdir: "$EXAMPLES_DIR"
-      resources:
-        accelerators:
-          gpu: 0
-        requests:
-          cpu: 100m
-          memory: 64Mi
-        limits:
-          cpu: 3000m
-          memory: 4Gi
-      default_volume_mapping: true
-  - name: convert-to-tf
-    resources:
-    - name: worker
-      replicas: 1
-      restartPolicy: Never
-      maxRestartCount: 0
-      allowFail: true
-      images:
-        gpu: "kuberlab/fastai:latest-gpu"
-        cpu: "kuberlab/fastai:latest-cpu"
-      command: >-
-        torch2tf --input $TRAINING_DIR/checkpoint.pth.tar
-        --model-class mnist:Net --input-shape 1,1,28,28 --output $TRAINING_DIR/tf_model
-        # && python upload_model.py --model-name mnist-pytorch-tf --version 1.0.0 --from-path $TRAINING_DIR/tf_model
-      workdir: "$EXAMPLES_DIR"
-      resources:
-        accelerators:
-          gpu: 0
-        requests:
-          cpu: 100m
-          memory: 64Mi
-        limits:
-          cpu: 1000m
-          memory: 4Gi
-      default_volume_mapping: true
+
   uix:
   - name: jupyter
     displayName: Jupyter

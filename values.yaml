@@ -10,6 +10,12 @@ src:
     name: "Source Code"
     kind: git
 
+tensorboard:
+  value: true
+  wizard:
+    name: Install Tensorboard
+    kind: boolean
+
 dataset:
  value: 'mnist'
  version: '1.0.0'

@@ -104,6 +104,28 @@ spec:
       protocol: TCP
       name: http
     default_volume_mapping: true
+  {{- if .tensorboard.value }}
+  - name: tensorboard
+    displayName: Tensorboard
+    command: "tensorboard --logdir=$TRAINING_DIR"
+    images:
+      gpu: "kuberlab/fastai:latest-gpu"
+      cpu: "kuberlab/fastai:latest-cpu"
+    ports:
+    - port: 6006
+      targetPort: 6006
+      protocol: TCP
+      name: http
+    resources:
+      requests:
+        cpu: 50m
+        memory: 64Mi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+    volumes:
+    - name: training
+  {{- end }}
   volumes:
   - name: training
     clusterStorage: {{ .storage.value }}

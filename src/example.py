@@ -31,14 +31,13 @@ def main():
 
     print(accuracy(*learn.get_preds()))
 
-    model = learn.model()
-    model_location = path.join(args.train_dir, "model.pth")
-    torch.save(model, model_location)
+    model_location = path.join(args.train_dir, "model")
+    model_location = learn.save(model_location, return_path=True)
 
-    torch_model = torch.load(model_location)
+    print('Model saved to %s.' % model_location)
 
     print('Network structure:')
-    torch_model.eval()
+    learn.model.eval()
 
 
 if __name__ == '__main__':

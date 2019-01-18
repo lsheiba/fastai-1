@@ -37,3 +37,7 @@ def main():
 
     print('Network structure:')
     torch_model.eval()
+
+
+if __name__ == '__main__':
+    main()

@@ -79,6 +79,11 @@ spec:
     - name: training
   {{- end }}
   volumes:
+  - name shm
+    type: HostPath
+    mountPath: /dev/shm
+    path: /tmp/test-shm
+    type: DirectoryOrCreate
   - name: training
     clusterStorage: {{ .storage.value }}
   - gitRepo:
